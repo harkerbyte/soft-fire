@@ -1,0 +1,11 @@
+{
+    "name" : "harkerbyte",
+    "version" : "4.2.0",
+    "private" : "true",
+    "devDependencies" : {
+        "sass" : "^1.49.0"
+    },
+    "scripts":  {
+        "build-css" : "sass  sass/hangman/hangman_game.scss Assets/games/hangman/style/hangman_game.css && sass sass/memory/memory_game.scss Assets/games/memory/style/memory_game.css"
+    }
+}

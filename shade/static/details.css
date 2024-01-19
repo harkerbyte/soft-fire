@@ -1,0 +1,22 @@
+th {
+    color:black;
+    text-align:left;
+}
+
+td {
+    color:black;
+    text-align:center;
+    font-family:courier;
+}
+
+tr {
+    padding-left:40px;
+    border-bottom:2px;
+    border-style:none;
+    border-color:blue;
+}
+
+button {
+    color:black;
+    border-radius:3px;
+}

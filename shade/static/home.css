@@ -1,0 +1,69 @@
+div 
+{
+    background-color:black;
+    padding:5px;
+    margin:0px;
+    text-decoration:none;
+}
+
+ul 
+{
+  list-style-type: none;
+  background-color:black;
+  padding:0px;
+  overflow:hidden;
+}
+
+li 
+{
+    float:left;
+}
+
+li a
+{
+    color:white;
+    display:block;
+    text-decoration:none;
+    padding:10px;
+    font-family:verdana;
+}
+li a:hover
+{
+   background-color:rgb(0, 17, 255);
+   text-decoration:underline;
+   padding:13px;
+}
+h1, h2 
+{
+    display:block;
+    color:rgb(9, 7, 7);
+    margin:0px;
+    padding:30px;
+    background-color:rgba(6, 128, 250, 0.94);
+    font-family:verdana;
+}
+
+button 
+{
+    color:rgb(5, 13, 14);
+    size: 10px;
+}
+
+
+pre 
+{
+    color:rgb(255, 247, 247);
+    font-family: sans-serif;
+    font-size: 100%;
+    letter-spacing: 1.5px;
+
+}
+
+
+p 
+{
+    color:rgb(78, 51, 187);
+    background-color:rgba(165, 208, 223, 0.896);
+    font-family:courier;
+    font-size:120%;
+}

@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>
+    Details
+</title>
+<link rel="fav" type="ICO" href="{%static 'images/harkerbyte favicon.ico'%}">
+
+<head>   
+<link rel="stylesheet" href="{% static 'global.css' %}">
+</head>
+<body>
+    <h2>Details</h2>
+    {% for x in members %}
+    <p>{{x.firstname}} {{x.lastname}}</p>
+    <a href="details/{{x.id}}/">More details</a>
+    {% endfor %}
+</body>
+</html>

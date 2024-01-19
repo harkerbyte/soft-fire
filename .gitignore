@@ -1,0 +1,7 @@
+*.pyc
+*.pyo
+*.elasticbeanstalk
+*.ebextensions
+postgresql
+.vscode
+.idea
