@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Conversion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+      
+        h1 {
+            background-color:grey;
+            color:azure;
+            padding:0px 10px;
+            margin: 0;
+            text-align:top;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #dn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 5px 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+        }
+      
+        #dn:hover {
+            background-color: #45a049;
+        }
+      
+      
+        .form-container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+      
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+      
+        .form-container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .note{
+            font-family:verdana;
+            text-align:center;
+            padding:5px;
+            margin:15px;
+        }
+      
+      
+    </style>
+</head>
+<body>
+    <div class="up">
+        <h1>File Conversion And Download</h1>
+        <form method="post" enctype="multipart/form-data" action="{%url 'game:convert_files'%}">
+            {%csrf_token%}
+            <label>Input .scss file: <input title="sass_file" type="file" name="sass_file" accept=".scss" required></label></br>
+
+            <label>Input .ts file: <input title="ts_file" type="file" name="ts_file" accept=".ts" required></label>
+            <button type="submit" id="dn">Convert and download</button>
+        </form>
+        <script>
+            alert('File conversion takes at most a minute')
+        </script>
+    </div>
+</body>
+</html>

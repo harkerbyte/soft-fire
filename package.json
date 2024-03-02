@@ -1,11 +1,39 @@
 {
-    "name" : "harkerbyte",
-    "version" : "4.2.0",
-    "private" : "true",
-    "devDependencies" : {
-        "sass" : "^1.49.0"
+    "name": "harkerbyte",
+    "version": "2.3.1",
+    "private": "true",
+    "devDependencies": {
+        "sass": "^1.70.0",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.3.3",
+        "webpack": "^5.90.2",
+        "webpack-cli": "^5.1.4"
     },
-    "scripts":  {
-        "build-css" : "sass  sass/hangman/hangman_game.scss Assets/games/hangman/style/hangman_game.css && sass sass/memory/memory_game.scss Assets/games/memory/style/memory_game.css"
+    "scripts": {
+        "build-css": "sass  sass/hangman/hangman_game.scss Assets/games/hangman/style/hangman_game.css && sass sass/memory/memory_game.scss Assets/games/memory/style/memory_game.css",
+        "webpack": "webpack --config webpack.config.js"
+    },
+    "dependencies": {
+        "css-loader": "^6.10.0",
+        "hint": "^2.0.0",
+        "mini-css-extract-plugin": "^2.8.0",
+        "sass-loader": "^14.1.0",
+        "style-loader": "^3.3.4"
+    },
+    "hintConfig": {
+        "connector": {
+            "name": "https"
+        },
+        "formatters": [
+            "4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ"
+        ],
+        "parsers": [
+            "javascript"
+        ],
+        "hints": {
+            "hint1": "warning",
+            "hint2": "error"
+        },
+        "hintsTimeout": 12000
     }
 }

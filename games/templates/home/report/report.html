@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#f4f4f4;
+            margin:0;
+            padding:0;
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            height:100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+            width:300px;
+        }
+        button {
+            background-color:#4caf50;
+            color:#fff;
+            padding:10px;
+            border:none;
+            border-radius: 4px;
+            cursor:pointer;
+            width:100%;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input {
+            width:80%;
+            padding:3px;
+            margin-bottom:3px;
+            border-radius: 4px;
+            box-sizing: 1px solid #ccc;
+        }
+        textarea {
+            width:80%;
+            height:70px;
+            padding:8px;
+            margin-top:6px;
+            box-sizing: 2px solid #ccc;
+            border-radius: 4px;
+
+        }
+        h3 {
+            display:block;
+            background-color:#f4f4f4;
+            color:rgb(30, 211, 30);
+            font-family:verdana;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            padding:30px;
+            margin:30px;
+        }
+    </style>
+</head>
+<body>
+    {%if report %}
+       <h3>Your email was successfully delivered. Expect a response within the next 24hours</h3>
+    {%else%}
+        <form method="post", enctype="multipart/form-data">
+            <h2>Report Form</h2>
+            {% csrf_token %}
+            {{form.as_p}}
+            {{form.errors}}
+            <button type="submit">Submit</button>
+        </form>
+        
+    {%endif%}
+</body>
+</body>
+</html>

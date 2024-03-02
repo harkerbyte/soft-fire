@@ -1,0 +1,1462 @@
+html {
+  font-size: 1vh;
+}
+
+body {
+  margin: 0;
+  background: #073B4C;
+  font-family: "Consolas";
+  color: #000;
+}
+body > div {
+  width: 56rem;
+  max-width: 100%;
+  height: 100rem;
+  margin: auto;
+  position: absolute;
+  overflow: hidden;
+  background: #3dc1ec;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+}
+body > div > div {
+  width: 100%;
+  height: 100%;
+  transform: translate3d(0, -8rem, 0) scale(0.9);
+}
+body div > div *:not(label), body div > div *:before, body div > div *:after, body sig *:not(label), body sig *:before, body sig *:after, body player1 *:not(label), body player1 *:before, body player1 *:after {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+}
+
+.table {
+  width: 30rem;
+  height: 30rem;
+  border: 0.5rem solid #222E35;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background: linear-gradient(90deg, #fff 14rem, #222E35 14rem, #222E35 14.5rem, #fff 14.5rem);
+  box-shadow: 0 10rem 0 rgba(34, 46, 53, 0.1);
+}
+.table:before {
+  height: 12rem;
+  border-left: 0.5rem solid #222E35;
+  border-right: 0.5rem solid #222E35;
+  width: 28rem;
+  transform: translate3d(0.5rem, 29.5rem, 0);
+}
+.table:after {
+  border: 0.5rem solid #222E35;
+  height: 4rem;
+  width: 32rem;
+  transform: translate3d(-1.5rem, 11rem, 0);
+  background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 0.5rem, #222E35 0.5rem, #222E35 0.8rem), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 0.5rem, #222E35 0.5rem, #222E35 0.8rem);
+}
+
+ball,
+player1 > u > u:nth-of-type(2) u:nth-of-type(3):before,
+player2 > u > u:nth-of-type(2) u:nth-of-type(3):before {
+  width: 2rem;
+  height: 2rem;
+  transform: translate3d(31rem, 50rem, 0);
+  background: #fff;
+  border: 0.5rem solid #222E35 !important;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+body > div > label {
+  height: 100%;
+  width: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  font-size: 3rem;
+}
+body > div > label:after {
+  padding: 0.5rem;
+  background: #fff;
+  transform: translate3d(1rem, 30rem, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body > div > label:before {
+  content: "";
+  border-radius: 1rem;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+body > div > label:hover:before {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ll {
+  left: 0;
+}
+
+.lr {
+  right: 0;
+}
+
+dialog1, dialog2, dialog3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+dialog1, dialog2, dialog3 {
+  /* display: none !important;*/
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 3rem;
+  background: #06D6A0;
+  background: linear-gradient(#06D6A0, #118AB2);
+  display: block;
+  padding: 4rem;
+  box-sizing: border-box;
+  transition: all 0.5s 0.5s cubic-bezier(0.02, 0.47, 0.53, 1.32);
+  letter-spacing: -0.025em;
+}
+dialog1 h1, dialog2 h1, dialog3 h1 {
+  line-height: 1em;
+}
+dialog1 player1, dialog2 player1, dialog3 player1 {
+  position: relative;
+  transform: none;
+  height: 28rem;
+  display: block;
+  width: 2rem;
+  margin: auto;
+}
+dialog1 label, dialog2 label, dialog3 label {
+  background: #000;
+  display: inline-block;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+dialog1 label, dialog2 label, dialog3 label {
+  cursor: pointer;
+}
+dialog1 label:hover, dialog2 label:hover, dialog3 label:hover {
+  background: #073B4C;
+}
+
+dialog2 {
+  transform: translate3d(0, -100%, 0);
+  background: linear-gradient(rgba(239, 71, 111, 0.3), rgba(243, 118, 148, 0.9)), #073B4C;
+  padding: 6rem 4rem;
+}
+
+dialog3 {
+  transform: translate3d(0, -100%, 0);
+}
+
+@keyframes remove-overlay {
+  100% {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+.clear-start:checked ~ div > dialog1 {
+  transform: translate3d(0, -100%, 0);
+}
+
+#miss-left:checked ~ div > dialog2, #miss-right:checked ~ div > dialog2 {
+  transform: translate3d(0, 0, 0);
+}
+
+#miss-right:checked ~ div > .mr:before, #miss-left:checked ~ div > .ml:before {
+  box-shadow: inset 0 0 20rem rgba(239, 71, 111, 0.5);
+  -webkit-mask-image: linear-gradient(rgba(255, 255, 255, 0), #fff, #fff);
+}
+
+#serve-left:checked ~ div > dialog2,
+#serve-right:checked ~ div > dialog2 {
+  animation: miss-delay 0.25s 2.5s linear forwards;
+}
+
+@keyframes miss-delay {
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes miss-delay2 {
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+#ls-hit-left-right:checked ~ div > dialog2,
+#ls-hit-left-right-2:checked ~ div > dialog2,
+#ls-hit-right-left-2:checked ~ div > dialog2,
+#ls-hit-right-left-3:checked ~ div > dialog2,
+#rs-hit-right-left:checked ~ div > dialog2,
+#rs-hit-right-left-2:checked ~ div > dialog2,
+#rs-hit-left-right-2:checked ~ div > dialog2,
+#rs-hit-left-right-3:checked ~ div > dialog2 {
+  animation: miss-delay2 0.25s 2.5s linear forwards;
+}
+
+#ls-hit-right-left:checked ~ div > dialog2,
+#ls-hit-right-right:checked ~ div > dialog2,
+#ls-hit-left-right-3:checked ~ div > dialog2,
+#ls-hit-left-left:checked ~ div > dialog2,
+#rs-hit-left-right:checked ~ div > dialog2,
+#rs-hit-left-left:checked ~ div > dialog2,
+#rs-hit-right-left-3:checked ~ div > dialog2,
+#rs-hit-right-right:checked ~ div > dialog2 {
+  animation: miss-delay 0.25s 2.5s linear forwards;
+}
+
+input {
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
+  transform: translate3d(0, 0.25rem, 0);
+}
+input + span {
+  color: #118AB2;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1250px) {
+  input, input + span {
+    display: none;
+  }
+}
+.in-play:checked ~ div > [for=serve-left], .in-play:checked ~ div > [for=serve-right] {
+  display: none;
+}
+
+small {
+  font-size: 1.5rem;
+}
+
+#win-left:checked ~ div > dialog3, #win-right:checked ~ div > dialog3 {
+  animation: miss-delay 0.5s 5s linear forwards;
+}
+
+sig {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 0.5rem;
+  color: #000;
+  width: 10em;
+  transform: skewX(10deg) scaleY(0.45) rotate(2deg);
+}
+sig, sig * {
+  height: 9.25em;
+  overflow: hidden;
+  border-radius: 0.5em;
+}
+sig:before, sig *:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5em;
+  height: 5em;
+  background: currentColor;
+  transform: translate3d(-2.5em, 0, 0) rotate(-45deg);
+  box-shadow: -3em 3em 0 0 currentColor;
+  border-radius: 0.5em 2em 0.5em 2em;
+}
+sig * {
+  width: 5em;
+  transform: translate3d(3.75em, 0, 0) scaleY(0.95);
+  display: block !important;
+}
+sig *:before {
+  transform: translate3d(-3em, -2em, 0) rotate(-45deg);
+  box-shadow: -3em 3em 0 0 currentColor, -6em 6em 0 0 currentColor;
+  border-radius: 0.5em;
+}
+
+a:hover sig, a:focus sig {
+  color: #fff;
+}
+
+@keyframes movemiss {
+  0%, 100% {
+    transform: scale(0);
+  }
+}
+@keyframes movemiss2 {
+  0%, 100% {
+    transform: scale(0);
+  }
+}
+.hl:checked ~ div > .ml, .hr:checked ~ div > .mr {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+.hlh:checked ~ div > .ml, .hrh:checked ~ div > .mr {
+  animation: movemiss 0.3s 1.5s linear;
+}
+
+#ls-hit-right-left:checked ~ div > .l1 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#ls-hit-left-right-2:checked ~ div > .r1 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#ls-hit-right-right:checked ~ div > .r2, #ls-hit-right-right:checked ~ div > .r1, #ls-hit-right-right:checked ~ div > .mr {
+  animation: movemiss2 0.4s 1.4s linear;
+}
+
+#ls-hit-right-left-2:checked ~ div > .l1, #ls-hit-right-left-2:checked ~ div > .l2 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#ls-hit-left-right-3:checked ~ div > .r1, #ls-hit-left-right-3:checked ~ div > .r2, #ls-hit-left-right-3:checked ~ div > .r3 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#ls-hit-right-left-3:checked ~ div > .l1, #ls-hit-right-left-3:checked ~ div > .l2, #ls-hit-right-left-3:checked ~ div > .l3 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#ls-hit-left-left:checked ~ div > .l1, #ls-hit-left-left:checked ~ div > .l2, #ls-hit-left-left:checked ~ div > .l3, #ls-hit-left-left:checked ~ div > .l4, #ls-hit-left-left:checked ~ div > .ml {
+  animation: movemiss2 0.4s 1.4s linear;
+}
+
+.rscb:checked ~ div > .ls {
+  display: none;
+}
+
+#rs-hit-left-right:checked ~ div > .r1 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#rs-hit-right-left-2:checked ~ div > .l1 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#rs-hit-left-left:checked ~ div > .l2, #rs-hit-left-left:checked ~ div > .l1, #rs-hit-left-left:checked ~ div > .ml {
+  animation: movemiss2 0.4s 1.4s linear;
+}
+
+#rs-hit-left-right-2:checked ~ div > .r1, #rs-hit-left-right-2:checked ~ div > .r2 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#rs-hit-right-left-3:checked ~ div > .l1, #rs-hit-right-left-3:checked ~ div > .l2, #rs-hit-right-left-3:checked ~ div > .l3 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#rs-hit-left-right-3:checked ~ div > .r1, #rs-hit-left-right-3:checked ~ div > .r2, #rs-hit-left-right-3:checked ~ div > .r3 {
+  animation: movemiss 0.4s 1.4s linear;
+}
+
+#rs-hit-right-right:checked ~ div > .r1, #rs-hit-right-right:checked ~ div > .r2, #rs-hit-right-right:checked ~ div > .r3, #rs-hit-right-right:checked ~ div > .r4, #rs-hit-right-right:checked ~ div > .mr {
+  animation: movemiss2 0.4s 1.4s linear;
+}
+
+player1, player2 {
+  transform: translate3d(40rem, 5rem, 0);
+}
+player1 > u:after, player2 > u:after {
+  width: 12rem;
+  height: 5rem;
+  background: rgba(34, 46, 53, 0.1);
+  border-radius: 50%;
+  transform: translate3d(-4rem, 20rem, 0);
+}
+player1 > u ball, player2 > u ball {
+  transform: translate3d(-10rem, 1rem, 0);
+  opacity: 0;
+}
+@keyframes serveball2 {
+  49%, 100% {
+    transform: translate3d(-10rem, 1rem, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    transform: translate3d(-10rem, -10rem, 0);
+    opacity: 1;
+  }
+}
+player1 > u > u:nth-of-type(2), player2 > u > u:nth-of-type(2) {
+  animation: standby 2s infinite;
+  height: 10rem;
+}
+player1 > u > u:nth-of-type(2) bat, player2 > u > u:nth-of-type(2) bat {
+  width: 1.5rem;
+  height: 4.5rem;
+  border-radius: 0.5rem;
+  background: #FFD166;
+  border: 0.5rem solid #222E35;
+  transform: translate3d(6rem, -3rem, 0) rotate(80deg);
+}
+player1 > u > u:nth-of-type(2) bat:before, player2 > u > u:nth-of-type(2) bat:before {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: #EF476F;
+  border: 0.5rem solid #222E35;
+  transform: translate3d(-2.25rem, -3rem, 0);
+}
+player1 > u > u:nth-of-type(2) u:nth-of-type(4), player2 > u > u:nth-of-type(2) u:nth-of-type(4) {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: #FFD166;
+  border: 0.5rem solid #222E35;
+  transform: translate3d(-2rem, 1rem, 0);
+}
+player1 > u > u:nth-of-type(2) u:nth-of-type(4):before, player2 > u > u:nth-of-type(2) u:nth-of-type(4):before {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #222E35;
+  border-radius: 50%;
+  transform: translate3d(1rem, 2rem, 0);
+  box-shadow: 1.2rem 0 0 #222E35;
+  animation: blink 6s infinite;
+}
+@keyframes blink {
+  70%, 74% {
+    transform: translate3d(1rem, 2rem, 0);
+  }
+  72% {
+    transform: translate3d(1rem, 2rem, 0) scaleY(0);
+  }
+}
+player1 > u > u:nth-of-type(2) u:nth-of-type(1), player2 > u > u:nth-of-type(2) u:nth-of-type(1) {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: #EF476F;
+  border: 0.5rem solid #222E35;
+  transform: translate3d(-3.5rem, 5rem, 0);
+}
+player1 > u > u:nth-of-type(2) u:nth-of-type(2), player2 > u > u:nth-of-type(2) u:nth-of-type(2) {
+  border-style: hidden;
+  border-left: 0.5rem solid #222E35;
+  border-top: 0.5rem solid #222E35;
+  width: 6rem;
+  height: 6rem;
+  transform: translate3d(-2.3rem, 1.4rem, 0) rotate(200deg);
+  border-radius: 100% 0% 0% 100%/100% 100% 0% 0%;
+  transform-origin: 0 100%;
+}
+@keyframes serve-left {
+  70% {
+    transform: translate3d(-1rem, 1rem, 0) rotate(280deg);
+  }
+}
+player1 > u > u:nth-of-type(2) u:nth-of-type(3), player2 > u > u:nth-of-type(2) u:nth-of-type(3) {
+  border-style: hidden;
+  border-top: 0.5rem solid #222E35;
+  border-right: 0.5rem solid #222E35;
+  width: 8rem;
+  height: 8rem;
+  transform: translate3d(4.3rem, 6rem, 0) rotate(13deg);
+  border-radius: 0% 100% 0% 100%/100% 100% 0% 0%;
+  transform-origin: 0 0;
+}
+player1 > u > u:nth-of-type(2) u:nth-of-type(3):before, player2 > u > u:nth-of-type(2) u:nth-of-type(3):before {
+  transform: translate3d(5rem, 8rem, 0);
+}
+@keyframes serve {
+  50% {
+    transform: translate3d(4rem, 6rem, 0) rotate(150deg);
+  }
+}
+@keyframes serveball {
+  49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+player1 > u > u:nth-of-type(1), player2 > u > u:nth-of-type(1) {
+  animation: standby2 2s infinite;
+  height: 10rem;
+  transform-origin: 100% 100%;
+  transform: translate3d(0, 14rem, 0) skewX(0deg) rotate(1deg);
+}
+player1 > u > u:nth-of-type(1) u:nth-of-type(2), player2 > u > u:nth-of-type(1) u:nth-of-type(2) {
+  width: 8rem;
+  height: 10rem;
+  border-style: hidden;
+  border-left: 0.5rem solid #222E35;
+  border-top: 0.5rem solid #222E35;
+  transform: translate3d(-6rem, 0, 0) rotate(-11deg);
+  border-radius: 100% 0% 0% 100%/100% 100% 0% 0%;
+}
+player1 > u > u:nth-of-type(1) u:nth-of-type(1), player2 > u > u:nth-of-type(1) u:nth-of-type(1) {
+  width: 8rem;
+  height: 10rem;
+  border-style: hidden;
+  border-top: 0.5rem solid #222E35;
+  border-right: 0.5rem solid #222E35;
+  transform: translate3d(1rem, 0, 0) rotate(12deg);
+  border-radius: 0% 100% 0% 100%/100% 100% 0% 0%;
+}
+
+@keyframes standby {
+  50% {
+    transform: skewX(2deg) rotate(-5deg);
+  }
+}
+@keyframes standby2 {
+  50% {
+    transform: translate3d(0, 14rem, 0) skewX(-5deg) rotate(1deg);
+  }
+}
+dialog1 player1 > u > u:nth-of-type(2) {
+  animation: standby3 2s infinite;
+}
+dialog1 player1 > u > u:nth-of-type(2) u:nth-of-type(2) {
+  animation: dance 2s infinite;
+  transform: translate3d(-2rem, 0.4rem, 0) rotate(60deg) scaleY(-1);
+}
+@keyframes dance {
+  25% {
+    transform: translate3d(-2rem, 0.4rem, 0) rotate(95deg) scaleY(-1);
+  }
+  50% {
+    transform: translate3d(-2rem, 0.4rem, 0) rotate(60deg) scaleY(-1);
+  }
+  75% {
+    transform: translate3d(-2rem, 0.4rem, 0) rotate(30deg) scaleY(-1);
+  }
+}
+dialog1 player1 > u > u:nth-of-type(2) u:nth-of-type(3) {
+  animation: dance2 2s infinite;
+  transform: translate3d(4.5rem, 6rem, 0) rotate(13deg);
+}
+@keyframes dance2 {
+  25% {
+    transform: translate3d(4.5rem, 6rem, 0) rotate(43deg);
+  }
+  50% {
+    transform: translate3d(4.5rem, 6rem, 0) rotate(13deg);
+  }
+  75% {
+    transform: translate3d(4.5rem, 6rem, 0) rotate(-13deg);
+  }
+}
+dialog1 player1 > u > u:nth-of-type(1) {
+  animation: standby4 2s infinite;
+}
+
+@keyframes standby3 {
+  25% {
+    transform: translate3d(0, 1rem, 0) skewX(3deg) rotate(-8deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+  75% {
+    transform: translate3d(0, 1rem, 0) skewX(-3deg) rotate(8deg);
+  }
+}
+@keyframes standby4 {
+  25% {
+    transform: translate3d(0, 14rem, 0) skewX(-8deg) rotate(3deg);
+  }
+  50% {
+    transform: translate3d(0, 14rem, 0);
+  }
+  75% {
+    transform: translate3d(0, 14rem, 0) skewX(8deg) rotate(-3deg);
+  }
+}
+dialog2 player1 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+dialog2 player1 > u > u:nth-of-type(2) u:nth-of-type(4) {
+  transform: translate3d(-2rem, 4rem, 0);
+  animation: looksadhead 6s infinite;
+}
+@keyframes looksadhead {
+  10%, 28% {
+    transform: translate3d(-2rem, 3.8rem, 0);
+  }
+  18%, 40% {
+    transform: translate3d(-2rem, 4.2rem, 0);
+  }
+}
+dialog2 player1 > u > u:nth-of-type(2) u:nth-of-type(4):before {
+  transform: translate3d(1rem, 3rem, 0);
+  animation: looksad 6s infinite;
+}
+@keyframes looksad {
+  10%, 22% {
+    transform: translate3d(0.5rem, 3rem, 0);
+  }
+  15%, 30% {
+    transform: translate3d(1.5rem, 3rem, 0);
+  }
+  70%, 74% {
+    transform: translate3d(1rem, 3rem, 0);
+  }
+  72% {
+    transform: translate3d(1rem, 2.5rem, 0) scaleY(0);
+  }
+}
+dialog2 player1 > u > u:nth-of-type(2) u:nth-of-type(2) {
+  transform: translate3d(-2.8rem, 1.4rem, 0) rotate(32deg) scaleY(-1);
+}
+dialog2 player1 > u > u:nth-of-type(2) u:nth-of-type(3) {
+  transform: translate3d(4.6rem, 6.2rem, 0) rotate(47deg);
+}
+
+dialog3 player1 > u {
+  transform: translate3d(0, 5rem, 0);
+}
+dialog3 player1 > u > u:nth-of-type(2) {
+  animation: standby3 1s infinite;
+}
+dialog3 player1 > u > u:nth-of-type(2) u:nth-of-type(4):before {
+  transform: translate3d(2rem, 2rem, 0);
+  animation: lookhappy 4s infinite;
+}
+@keyframes lookhappy {
+  50% {
+    transform: translate3d(0.5rem, 2.5rem, 0);
+  }
+}
+dialog3 player1 > u > u:nth-of-type(2) u:nth-of-type(2) {
+  animation: windance 1s infinite;
+  transform: translate3d(-1.8rem, 0.8rem, 0) rotate(270deg);
+}
+@keyframes windance {
+  25% {
+    transform: translate3d(-1.8rem, 0.8rem, 0) rotate(320deg);
+  }
+  50% {
+    transform: translate3d(-1.8rem, 0.8rem, 0) rotate(260deg);
+  }
+  75% {
+    transform: translate3d(-1.8rem, 0.8rem, 0) rotate(230deg);
+  }
+}
+dialog3 player1 > u > u:nth-of-type(2) u:nth-of-type(3) {
+  animation: windance2 1s infinite;
+  transform: translate3d(4.5rem, 6.5rem, 0) rotate(0deg) scaleY(-1);
+}
+@keyframes windance2 {
+  25% {
+    transform: translate3d(4.5rem, 6.5rem, 0) rotate(50deg) scaleY(-1);
+  }
+  50% {
+    transform: translate3d(4.5rem, 6.5rem, 0) rotate(0deg) scaleY(-1);
+  }
+  75% {
+    transform: translate3d(4.5rem, 6.5rem, 0) rotate(-70deg) scaleY(-1);
+  }
+}
+dialog3 player1 > u > u:nth-of-type(1) {
+  animation: standby4 1s infinite;
+}
+
+confetti {
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(#fff, #fff, rgba(255, 255, 255, 0));
+}
+confetti, confetti:before, confetti:after, confetti *, confetti *:before, confetti *:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+confetti > u > u {
+  animation: sway 2s infinite linear;
+  transform: translate3d(0, 20rem, 0) scale(0);
+}
+confetti > u > u, confetti > u > u:before, confetti > u > u:after {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  color: #EF476F;
+  background: currentColor;
+  box-shadow: -14rem -7rem 0 currentColor , 11rem -2rem 0 currentColor , 4rem 7rem 0 currentColor , -9rem -11rem 0 currentColor;
+}
+confetti > u > u:before {
+  color: #FFD166;
+  transform: translate3d(4rem, -3rem, 0);
+  box-shadow: 4rem 7rem 0 currentColor , 14rem -14rem 0 currentColor , -11rem 7rem 0 currentColor , -12rem -6rem 0 currentColor , 10rem 0rem 0 currentColor;
+}
+confetti > u > u:after {
+  color: #06D6A0;
+  transform: translate3d(1.5rem, -1rem, 0);
+  box-shadow: -7rem -5rem 0 currentColor , 0rem 5rem 0 currentColor , -12rem 11rem 0 currentColor , 11rem -1rem 0 currentColor , -9rem 2rem 0 currentColor , 13rem 2rem 0 currentColor;
+}
+confetti > u {
+  transform: translate3d(35rem, 0, 0);
+}
+confetti > u:nth-of-type(2) {
+  transform: translate3d(15rem, 0, 0);
+}
+confetti > u:nth-of-type(2) > u {
+  animation: sway 2s 0.5s infinite linear;
+  transform: translate3d(0, 10rem, 0) scale(0);
+}
+confetti > u:nth-of-type(3) {
+  transform: translate3d(40rem, 0, 0);
+}
+confetti > u:nth-of-type(3) > u {
+  animation: sway 2s 1s infinite linear;
+  transform: translate3d(0, 10rem, 0) scale(0);
+}
+confetti > u:nth-of-type(4) {
+  transform: translate3d(7rem, 0, 0);
+}
+confetti > u:nth-of-type(4) > u {
+  animation: sway 2s 1.5s infinite linear;
+  transform: translate3d(0, 0, 0) scale(0);
+}
+
+@keyframes sway {
+  10% {
+    transform: translate3d(0.8rem, 5rem, 0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(-0.9rem, 15rem, 0) scale(1) scaleX(0.9);
+  }
+  45% {
+    transform: translate3d(0.7rem, 28rem, 0) scale(1);
+  }
+  65% {
+    transform: translate3d(-0.9rem, 35rem, 0) scale(1) scaleX(1.1);
+    opacity: 1;
+  }
+  85% {
+    transform: translate3d(0.6rem, 42rem, 0) scale(1) scaleX(0.9);
+    opacity: 1;
+  }
+  99% {
+    transform: translate3d(0, 50rem, 0) scale(1) scaleX(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 50rem, 0) scale(1);
+    opacity: 0;
+  }
+}
+player2 > u, player1 > u {
+  animation: move-in 0.2s forwards;
+}
+player2 > u:after, player1 > u:after {
+  animation: move-shadow2 0.2s forwards;
+}
+
+player2 {
+  transform: translate3d(38rem, 80rem, 0);
+}
+player2 > u {
+  transform: translate3d(-10rem, 0, 0);
+}
+player2 > u > u:nth-of-type(2) u:nth-of-type(4):before {
+  display: none;
+}
+
+@keyframes move-in {
+  50% {
+    transform: translate3d(0, -5rem, 0);
+  }
+}
+@keyframes move-shadow1 {
+  50% {
+    transform: translate3d(-4rem, 24rem, 0) scale(1.1);
+  }
+}
+@keyframes move-shadow2 {
+  50% {
+    transform: translate3d(-4rem, 24rem, 0) scale(1.1);
+  }
+}
+@keyframes move-shadow3 {
+  50% {
+    transform: translate3d(-4rem, 24rem, 0) scale(1.1);
+  }
+}
+@keyframes move-shadow4 {
+  50% {
+    transform: translate3d(-4rem, 24rem, 0) scale(1.1);
+  }
+}
+@keyframes move-left {
+  50% {
+    transform: translate3d(-5rem, -3rem, 0);
+  }
+  100% {
+    transform: translate3d(-8rem, 0, 0);
+  }
+}
+@keyframes move-right {
+  50% {
+    transform: translate3d(5rem, -4rem, 0);
+  }
+  100% {
+    transform: translate3d(8rem, 1rem, 0);
+  }
+}
+@keyframes move-left-d {
+  50% {
+    transform: translate3d(-5rem, -4rem, 0);
+  }
+  100% {
+    transform: translate3d(-10rem, 0, 0);
+  }
+}
+@keyframes move-right-d {
+  50% {
+    transform: translate3d(3rem, -3rem, 0);
+  }
+  100% {
+    transform: translate3d(7rem, 2rem, 0);
+  }
+}
+@keyframes left-arm-swing-1 {
+  10% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(160deg);
+  }
+  20% {
+    transform: translate3d(-2rem, 1rem, 0) rotate(250deg) scaleX(0.5);
+  }
+}
+@keyframes left-arm-swing-2 {
+  10% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(160deg);
+  }
+  20% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(230deg) skew(10deg) scaleX(0.8);
+  }
+}
+@keyframes left-arm-swing-3 {
+  10% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(160deg);
+  }
+  20% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(230deg) skew(10deg) scaleX(0.8);
+  }
+}
+@keyframes left-arm-swing-4 {
+  10% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(160deg);
+  }
+  20% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(230deg) skew(10deg) scaleX(0.8);
+  }
+}
+@keyframes right-arm-swing-1 {
+  50% {
+    transform: translate3d(4rem, 6rem, 0) rotate(-60deg);
+  }
+}
+@keyframes right-arm-swing-2 {
+  50% {
+    transform: translate3d(4rem, 6rem, 0) rotate(-80deg);
+  }
+}
+@keyframes right-arm-swing-3 {
+  50% {
+    transform: translate3d(4rem, 6rem, 0) rotate(-60deg);
+  }
+}
+.hit-left-left:checked ~ div > div > player2 > u,
+.hit-left-right-2:checked ~ div > div > player2 > u,
+#miss-left:checked ~ div > div > player2 > u,
+#win-left:checked ~ div > div > player2 > u {
+  animation: move-left 0.2s forwards;
+}
+.hit-left-left:checked ~ div > div > player2 > u:after,
+.hit-left-right-2:checked ~ div > div > player2 > u:after,
+#miss-left:checked ~ div > div > player2 > u:after,
+#win-left:checked ~ div > div > player2 > u:after {
+  animation: move-shadow1 0.2s forwards;
+}
+
+.hit-left-right:checked ~ div > div > player2 > u,
+.hit-left-right-3:checked ~ div > div > player2 > u {
+  animation: move-left-d 0.2s forwards;
+}
+.hit-left-right:checked ~ div > div > player2 > u:after,
+.hit-left-right-3:checked ~ div > div > player2 > u:after {
+  animation: move-shadow2 0.2s forwards;
+}
+
+.hit-right-right:checked ~ div > div > player2 > u,
+.hit-right-left-2:checked ~ div > div > player2 > u,
+#miss-right:checked ~ div > div > player2 > u,
+#win-right:checked ~ div > div > player2 > u {
+  animation: move-right 0.2s forwards;
+}
+.hit-right-right:checked ~ div > div > player2 > u:after,
+.hit-right-left-2:checked ~ div > div > player2 > u:after,
+#miss-right:checked ~ div > div > player2 > u:after,
+#win-right:checked ~ div > div > player2 > u:after {
+  animation: move-shadow3 0.2s forwards;
+}
+
+.hit-right-left:checked ~ div > div > player2 > u,
+.hit-right-left-3:checked ~ div > div > player2 > u {
+  animation: move-right-d 0.2s forwards;
+}
+.hit-right-left:checked ~ div > div > player2 > u:after,
+.hit-right-left-3:checked ~ div > div > player2 > u:after {
+  animation: move-shadow4 0.2s forwards;
+}
+
+.hit-right-right:checked ~ div > div > player1 > u,
+.hit-right-left-2:checked ~ div > div > player1 > u {
+  animation: move-right 0.2s forwards;
+}
+.hit-right-right:checked ~ div > div > player1 > u:after,
+.hit-right-left-2:checked ~ div > div > player1 > u:after {
+  animation: move-shadow1 0.2s forwards;
+}
+
+.hit-left-right:checked ~ div > div > player1 > u,
+.hit-left-right-3:checked ~ div > div > player1 > u {
+  animation: move-right-d 0.2s 0.5s forwards;
+}
+.hit-left-right:checked ~ div > div > player1 > u:after,
+.hit-left-right-3:checked ~ div > div > player1 > u:after {
+  animation: move-shadow2 0.2s 0.5s forwards;
+}
+
+.hit-left-left:checked ~ div > div > player1 > u,
+.hit-left-right-2:checked ~ div > div > player1 > u,
+#win-left:checked ~ div > div > player1 > u,
+#serve-right:checked ~ div > div > player1 > u {
+  animation: move-left 0.2s 0.5s forwards;
+}
+.hit-left-left:checked ~ div > div > player1 > u:after,
+.hit-left-right-2:checked ~ div > div > player1 > u:after,
+#win-left:checked ~ div > div > player1 > u:after,
+#serve-right:checked ~ div > div > player1 > u:after {
+  animation: move-shadow3 0.2s 0.5s forwards;
+}
+
+.hit-right-left:checked ~ div > div > player1 > u,
+.hit-right-left-3:checked ~ div > div > player1 > u,
+#win-right:checked ~ div > div > player1 > u {
+  animation: move-left-d 0.2s 0.5s forwards;
+}
+.hit-right-left:checked ~ div > div > player1 > u:after,
+.hit-right-left-3:checked ~ div > div > player1 > u:after,
+#win-right:checked ~ div > div > player1 > u:after {
+  animation: move-shadow4 0.2s 0.5s forwards;
+}
+
+#miss-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2),
+#miss-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-1 1s 0.2s ease-out;
+}
+#miss-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3),
+#miss-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  transform: translate3d(4rem, 6rem, 0) rotate(-21deg);
+  animation: right-arm-swing-1 1s 0.2s ease-out;
+}
+
+.hit-left-right-2:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-left-right-3:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-left-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-2 1s ease-out;
+}
+.hit-left-right-2:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-left-right-3:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-left-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-2 1s ease-out;
+}
+.hit-left-right-2:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-left-right-3:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-left-right:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-2 1s 1s ease-out;
+}
+.hit-left-right-2:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-left-right-3:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-left-right:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-2 1s 1s ease-out;
+}
+
+.hit-right-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-right-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-right-left-3:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-4 1s ease-out;
+}
+.hit-right-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-right-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-right-left-3:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-4 1s ease-out;
+}
+.hit-right-right:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-right-left:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-right-left-3:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-3 1s 0.9s ease-out !important;
+}
+.hit-right-right:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-right-left:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-right-left-3:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-3 1s 0.9s ease-out;
+}
+
+.hit-left-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-right-left-2:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-1 1s ease-out;
+}
+.hit-left-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-right-left-2:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-1 1s ease-out;
+}
+.hit-left-left:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2),
+.hit-right-left-2:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-1 1s 0.9s ease-out;
+}
+.hit-left-left:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3),
+.hit-right-left-2:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-1 1s 0.9s ease-out;
+}
+
+#win-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-2 1s ease-out;
+}
+#win-left:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-2 1s ease-out;
+}
+#win-left:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(4):before {
+  transform: translate3d(1rem, 2rem, 0);
+  animation: misseyes 5s 0.5s;
+}
+@keyframes misseyes {
+  20% {
+    transform: translate3d(1.5rem, 2.5rem, 0);
+  }
+  30% {
+    transform: translate3d(0.5rem, 2.5rem, 0);
+  }
+  90% {
+    transform: translate3d(0.5rem, 1rem, 0);
+  }
+}
+#win-left:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-1 5s 1.9s ease-out !important;
+}
+#win-left:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-1 5s 1.9s ease-out;
+}
+
+#win-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-swing-1 1s ease-out;
+}
+#win-right:checked ~ div > div > player2 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-1 1s ease-out;
+}
+#win-right:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(4) {
+  animation: duck 5s 0.5s;
+}
+@keyframes duck {
+  30% {
+    transform: translate3d(-2rem, 1rem, 0);
+  }
+  90% {
+    transform: translate3d(-2rem, 2rem, 0);
+  }
+}
+#win-right:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(4):before {
+  transform: translate3d(1rem, 2rem, 0);
+  animation: misseyes2 5s 0.5s;
+}
+@keyframes misseyes2 {
+  20% {
+    transform: translate3d(1.5rem, 2.5rem, 0);
+  }
+  30% {
+    transform: translate3d(1rem, 2.5rem, 0);
+  }
+  90% {
+    transform: translate3d(1rem, 1rem, 0);
+  }
+}
+#win-right:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(2) {
+  animation: left-arm-duck 5s 1.9s ease-out;
+}
+@keyframes left-arm-duck {
+  10% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(200deg);
+  }
+  20% {
+    transform: translate3d(-2rem, 1rem, 0) rotate(300deg) scaleX(0.5);
+  }
+}
+#win-right:checked ~ div > div > player1 > u > u:nth-of-type(2) > u:nth-of-type(3) {
+  animation: right-arm-swing-1 5s 1.9s ease-out;
+}
+
+#win-left:checked ~ div > winoverlay:after, #win-left:checked ~ div > winoverlay, #win-right:checked ~ div > winoverlay:after, #win-right:checked ~ div > winoverlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#win-left:checked ~ div > winoverlay:before, #win-left:checked ~ div > winoverlay:after, #win-left:checked ~ div > winoverlay, #win-right:checked ~ div > winoverlay:before, #win-right:checked ~ div > winoverlay:after, #win-right:checked ~ div > winoverlay {
+  position: absolute;
+}
+#win-left:checked ~ div > winoverlay:before, #win-right:checked ~ div > winoverlay:before {
+  content: "";
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border-left: 0.5rem dashed #EF476F;
+  border-top: 0.5rem dashed #EF476F;
+  border-right: 0.5rem solid #EF476F;
+  border-bottom: 0.5rem solid #EF476F;
+  left: 4rem;
+  top: 3rem;
+  animation: blinktext 0.5s 1s linear infinite;
+  opacity: 0;
+  transform: scale(1.3) rotate(-45deg);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 50%, #EF476F 50%);
+  background-position: calc(100% - 1.4rem) 0.7rem;
+  background-size: 2rem 2rem;
+  background-repeat: no-repeat;
+}
+@keyframes blinktext {
+  40% {
+    opacity: 0;
+  }
+  50%, 90% {
+    opacity: 1;
+  }
+}
+#win-left:checked ~ div > winoverlay:after, #win-right:checked ~ div > winoverlay:after {
+  content: "";
+  background: repeating-linear-gradient(#EF476F, #EF476F 1rem, rgba(255, 255, 255, 0) 1rem, rgba(255, 255, 255, 0) 2rem);
+  opacity: 0.1;
+  animation: slowmo 0.2s 1s linear infinite;
+  mix-blend-mode: difference;
+  opacity: 0;
+  -webkit-mask-image: linear-gradient(#000, rgba(255, 255, 255, 0));
+}
+@keyframes slowmo {
+  49% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.1;
+  }
+  50%, 100% {
+    transform: translate3d(0, 1rem, 0);
+  }
+}
+
+#serve-left:checked ~ div > div > ball {
+  transform: translate3d(27rem, 15rem, 0);
+  animation: serveball3 1s 1s;
+}
+@keyframes serveball3 {
+  1%, 100% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(20rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(12rem, 120rem, 0);
+  }
+}
+#serve-left:checked ~ div > div > player1 > u ball {
+  transform: translate3d(-10rem, 1rem, 0);
+  animation: serveball2 1s;
+  opacity: 0;
+}
+@keyframes serveball2 {
+  49%, 100% {
+    transform: translate3d(-10rem, 1rem, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    transform: translate3d(-10rem, -10rem, 0);
+    opacity: 1;
+  }
+}
+#serve-left:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(2) {
+  animation: serve-left 2s 0.1s ease-out;
+}
+@keyframes serve-left {
+  5%, 50%, 70% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(150deg);
+  }
+  40% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(280deg);
+  }
+}
+#serve-left:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(3) {
+  transform: translate3d(4rem, 6rem, 0) rotate(-21deg);
+  animation: serve 1s ease-out;
+}
+#serve-left:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(3):before {
+  transform: translate3d(5rem, 8rem, 0);
+  animation: serveball 1s ease-out;
+}
+@keyframes serve {
+  50% {
+    transform: translate3d(4rem, 6rem, 0) rotate(150deg);
+  }
+}
+@keyframes serveball {
+  49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+#serve-right:checked ~ div > div > ball {
+  transform: translate3d(20rem, 16rem, 0);
+  animation: serveball4 1s 1s;
+}
+@keyframes serveball4 {
+  1%, 100% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(25rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(32rem, 120rem, 0);
+  }
+}
+#serve-right:checked ~ div > div > player1 > u ball {
+  transform: translate3d(-10rem, 1rem, 0);
+  animation: serveball2 1s;
+  opacity: 0;
+}
+@keyframes serveball2 {
+  49%, 100% {
+    transform: translate3d(-10rem, 1rem, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    transform: translate3d(-10rem, -10rem, 0);
+    opacity: 1;
+  }
+}
+#serve-right:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(2) {
+  animation: serve-left 2s 0.1s ease-out;
+}
+@keyframes serve-left {
+  5%, 50%, 70% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(150deg);
+  }
+  40% {
+    transform: translate3d(-2rem, 1.4rem, 0) rotate(280deg);
+  }
+}
+#serve-right:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(3) {
+  transform: translate3d(4rem, 6rem, 0) rotate(-21deg);
+  animation: serve 1s ease-out;
+}
+#serve-right:checked ~ div > div > player1 > u > u:nth-of-type(2) u:nth-of-type(3):before {
+  transform: translate3d(5rem, 8rem, 0);
+  animation: serveball 1s ease-out;
+}
+@keyframes serve {
+  50% {
+    transform: translate3d(4rem, 6rem, 0) rotate(150deg);
+  }
+}
+@keyframes serveball {
+  49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.hit-left-left:checked ~ div > div > ball {
+  transform: translate3d(15rem, 89rem, 0);
+  animation: hit-left-left 2s;
+}
+@keyframes hit-left-left {
+  1%, 100% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(16.5rem, 40rem, 0);
+  }
+  50% {
+    transform: translate3d(16.5rem, 15rem, 0);
+  }
+  75% {
+    transform: translate3d(16.5rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(16.5rem, 120rem, 0);
+  }
+}
+
+.hit-right-right:checked ~ div > div > ball {
+  transform: translate3d(32rem, 89rem, 0);
+  animation: hit-right-right 2s;
+}
+@keyframes hit-right-right {
+  1%, 100% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(34rem, 40rem, 0);
+  }
+  50% {
+    transform: translate3d(34rem, 15rem, 0);
+  }
+  75% {
+    transform: translate3d(34rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(34rem, 120rem, 0);
+  }
+}
+
+.hit-left-right-2:checked ~ div > div > ball {
+  transform: translate3d(15rem, 89rem, 0);
+  animation: hit-left-right-2 2s;
+}
+@keyframes hit-left-right-2 {
+  1%, 100% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(16.5rem, 40rem, 0);
+  }
+  50% {
+    transform: translate3d(18rem, 15rem, 0);
+  }
+  75% {
+    transform: translate3d(25rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(34rem, 120rem, 0);
+  }
+}
+
+.hit-right-left-2:checked ~ div > div > ball {
+  transform: translate3d(33rem, 89rem, 0);
+  animation: hit-right-left-2 2s;
+}
+@keyframes hit-right-left-2 {
+  1%, 100% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(33.5rem, 40rem, 0);
+  }
+  50% {
+    transform: translate3d(34rem, 15rem, 0);
+  }
+  75% {
+    transform: translate3d(25rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(16.5rem, 120rem, 0);
+  }
+}
+
+.hit-right-left:checked ~ div > div > ball,
+.hit-right-left-3:checked ~ div > div > ball {
+  transform: translate3d(30rem, 89rem, 0);
+  animation: returnball3 2s;
+}
+@keyframes returnball3 {
+  1%, 100% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(20rem, 40rem, 0);
+  }
+  50% {
+    transform: translate3d(15rem, 15rem, 0);
+  }
+  75% {
+    transform: translate3d(16rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(17rem, 120rem, 0);
+  }
+}
+
+.hit-left-right:checked ~ div > div > ball,
+.hit-left-right-3:checked ~ div > div > ball {
+  transform: translate3d(14rem, 89rem, 0);
+  animation: returnball4 2s;
+}
+@keyframes returnball4 {
+  1%, 100% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(23rem, 40rem, 0);
+  }
+  50% {
+    transform: translate3d(32rem, 15rem, 0);
+  }
+  75% {
+    transform: translate3d(33rem, 50rem, 0);
+  }
+  100% {
+    transform: translate3d(34rem, 120rem, 0);
+  }
+}
+
+#win-right:checked ~ div > div > ball {
+  transform: translate3d(30rem, 89rem, 0);
+  animation: winrightball 5s;
+}
+@keyframes winrightball {
+  1%, 100% {
+    opacity: 1;
+  }
+  15% {
+    transform: translate3d(30rem, 40rem, 0);
+  }
+  100% {
+    transform: translate3d(30rem, 0rem, 0);
+  }
+}
+
+#win-left:checked ~ div > div > ball {
+  transform: translate3d(14rem, 89rem, 0);
+  animation: winleftball 5s;
+}
+@keyframes winleftball {
+  1%, 100% {
+    opacity: 1;
+  }
+  15% {
+    transform: translate3d(21rem, 40rem, 0);
+  }
+  100% {
+    transform: translate3d(28rem, 0rem, 0);
+  }
+}

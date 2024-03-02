@@ -1,0 +1,68 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <style>
+        .Up {
+            display:block;
+            background-color:rgb(19, 22, 19);
+            font-family:verdana;
+            font-size:auto;
+        }
+
+        .form {
+            color:rgb(245, 222, 179);
+            background-color:rgb(177, 194, 160);
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            margin:auto;
+        }
+
+        p {
+            color:aliceblue;
+            font-family: 'Franklin Gothic Medium';
+        }
+
+        h4 {
+            color:rgb(18, 88, 218);
+            font-family: verdana;
+        }
+        #image {
+            height:300px;
+            width: 400px;
+            padding-left:5px;
+            padding-top:6px;
+        }
+        .play {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="Up">
+        {%if upload%}
+            <img id="image" src="{{form.instance.Image_View.url}}">
+            <h4>{{form.cleaned_data.title}} has been successfully added</h4><button class="play" onclick="document.location.href='{%url 'game:play_games' %}'">Play Game</button>
+        {%else%}
+            </div>
+            <div class="form">
+                <form method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        {%endif%}
+</body>
+</html>

@@ -1,5 +1,6 @@
 from pathlib import Path
-
+import os
+from decouple import Config, RepositoryEnv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%d4lk*zmbliye-#1vjv8$v=*y8&yiq1u9d@e=u(k$hl+7a8djx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -25,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'shade',
+    'games.apps.GamesConfig',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -90,6 +93,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+SESSION_COOKIE_SECURE = True
+
+SESSION_COOKIE_HTTPONLY = True
+
+SESSION_COOKIE_AGE = 604800
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+SESSION_SAVE_EVERY_REQUEST = True
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -99,8 +112,43 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_ROOT = BASE_DIR/ 'Assets'
-
-STATIC_URL = 'static/'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'harker.share@gmail.com'
+EMAIL_HOST_PASSWORD = 'frxr fzjq fufw ykka'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEVELOPER = ['adesolasherifdeen3@gmail.com']
+
+
+if DEBUG==False:
+    path = os.path.join(BASE_DIR, '.env')
+    config = Config(RepositoryEnv(path))
+    AWS_ACCESS_KEY_ID=config.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY=config.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME=config.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME=config.get('AWS_S3_REGION_NAME')
+    AWS_CUSTOM_DOMAIN_NAME=f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_DEFAULT_ACL=None
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl':'max-age=86400'}
+    
+    #STATIC FILES BUCKET
+    
+    STATIC_LOCATION = 'static'
+    STATIC_URL = f'{AWS_CUSTOM_DOMAIN_NAME}/{STATIC_LOCATION}/'
+    STATICFILES_STORAGE = 'harkerbyte.storage_backends.StaticStorage'
+    
+    #MEDIA FILES BUCKET
+    
+    MEDIA_LOCATION = 'media'
+    MEDIA_URL = f'{AWS_CUSTOM_DOMAIN_NAME}/{MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = 'harkerbyte.storage_backends.MediaStorage'
+    
+else:
+    STATIC_URL = 'static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'assests')
+    
+    MEDIA_URL = 'media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

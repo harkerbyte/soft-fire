@@ -5,3 +5,5 @@
 postgresql
 .vscode
 .idea
+*sass
+desktop.ini

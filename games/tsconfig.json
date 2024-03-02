@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "CommonJS",
+        "strict": true,
+        "allowJs": true,
+        "sourceMap": true,
+    },
+    "include": [
+        "./uploads/ts/*.ts",
+    ],
+    "exclude": [
+        "./node_modules",
+    ]
+}
