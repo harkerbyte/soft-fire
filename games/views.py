@@ -2,14 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from .models import game
 from .forms import GameUpload , ReportForm
 from django.utils.text import slugify
-from django.http import HttpResponse , HttpResponseBadRequest , HttpResponseServerError , HttpResponseNotAllowed
+from django.http import HttpResponse , HttpResponseBadRequest , HttpResponseServerError
 from django.core.exceptions import ValidationError
 import subprocess
 import os
 from django.views.decorators.http import require_POST
-from django.conf import settings
 from django.core.mail import EmailMessage
-from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 import io
 

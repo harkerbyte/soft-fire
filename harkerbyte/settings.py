@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%d4lk*zmbliye-#1vjv8$v=*y8&yiq1u9d@e=u(k$hl+7a8djx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -95,13 +95,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SESSION_COOKIE_SECURE = True
 
-SESSION_COOKIE_HTTPONLY = True
-
 SESSION_COOKIE_AGE = 604800
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-SESSION_SAVE_EVERY_REQUEST = True
 
 LANGUAGE_CODE = 'en-us'
 
@@ -133,6 +130,7 @@ if DEBUG==False:
     AWS_CUSTOM_DOMAIN_NAME=f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_DEFAULT_ACL=None
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl':'max-age=86400'}
+    AWS_QUERYSTRING_AUTH = False
     
     #STATIC FILES BUCKET
     
@@ -148,7 +146,7 @@ if DEBUG==False:
     
 else:
     STATIC_URL = 'static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'assests')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'Assets')
     
     MEDIA_URL = 'media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

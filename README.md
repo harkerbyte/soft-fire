@@ -3,11 +3,10 @@
 ![GitHub issues](https://img.shields.io/github/issues/harkerbyte/safe-fire?style=for-the-badge&logo=git)
 
 ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/harkerbyte/safe-fire?style=for-the-badge&logo=git&color=blue)
-![GitHub watchers](https://img.shields.io/github/watchers/harkerbyte/safe-fire?style=for-the-badge&logo=git&logoColor=green)
 
-### Extensions and Licence
+### Cross Platform and Licence
 
-![GitHub Repo stars](https://img.shields.io/github/stars/harkerbyte/soft-fire?style=for-the-badge&logo=github)
+
 ![node-current](https://img.shields.io/node/v/package?style=for-the-badge&logo=node&logoColor=blue)
 ![GitHub License](https://img.shields.io/github/license/harkerbyte/soft-fire?style=for-the-badge&logo=github&color=green)
 
@@ -22,7 +21,7 @@ An innovative web app, seamlessly integrates **Python and JS** to create a dynam
 | Version |  Publicized  |   Changes 
 ----------|--------------|---------          
 |1.0.0    | 2024-01-19   | Initial release 
-|2.3.0    | 2024-02-20   | New Ui and feel, Template to upload game properties. File conversion & Download (Ts to Js & .scss to .css)|
+|2.3.0    | 2024-03-2   | New Ui and feel, Template to upload game properties. File conversion & Download (Ts to Js & .scss to .css), S3 storage system.|
 
 
 **Soft Fire** is designed for continuous improvement, with ongoing **Minor** patches delivering new features and enhanced security. Its dynamic nature ensures that development remains active, guaranteeing a cutting-edge experience for users as the software evolves over time.</br>
