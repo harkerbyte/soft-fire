@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%d4lk*zmbliye-#1vjv8$v=*y8&yiq1u9d@e=u(k$hl+7a8djx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -62,16 +62,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'harkerbyte.wsgi.application'
 
+#READY FOR PRODUCTION? - True / False 
+PRODUCTION = False
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if PRODUCTION==True:
+    #THIS CONDITION USES POSTGRESQL ON DEFAULT
+    dbpath = os.path.join(BASE_DIR, '.credentials/db.config')
+    configdb = Config(RepositoryEnv(dbpath))
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER':configdb.get('USER'),
+            'PASSWORD':configdb.get('PASSWORD'),
+            'HOST':configdb.get('HOST'),
+            'PORT':configdb.get('PORT')
+        }
     }
-}
+    
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE':'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3'
+        }
+    }
 
 
 # Password validation
@@ -120,8 +135,8 @@ EMAIL_USE_TLS = True
 DEVELOPER = ['adesolasherifdeen3@gmail.com']
 
 
-if DEBUG==False:
-    path = os.path.join(BASE_DIR, '.env')
+if PRODUCTION==True:
+    path = os.path.join(BASE_DIR, '.credentials/.env')
     config = Config(RepositoryEnv(path))
     AWS_ACCESS_KEY_ID=config.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY=config.get('AWS_SECRET_ACCESS_KEY')

@@ -20,10 +20,11 @@ An innovative web app, seamlessly integrates **Python and JS** to create a dynam
 
 # ChangeLog
 
-| Version |  Publicized  |   Changes 
+| Version |  Publicized  |   What's New
 ----------|--------------|---------          
 |1.0.0    | 2024-01-19   | Initial release 
-|2.3.0    | 2024-03-2   | New Ui and feel, Template to upload game properties. File conversion & Download (Ts to Js & .scss to .css), S3 storage system.|
+|2.4.0    | 2024-03-02   | New Ui and feel, Template to upload game properties. File conversion & Download (Ts to Js & .scss to .css), S3 storage system.|
+|2.5.0    |2024-03-04    |Database Engine : PostgreSQL|
 
 
 **Soft Fire** is designed for continuous improvement, with ongoing **Minor** patches delivering new features and enhanced security. Its dynamic nature ensures that development remains active, guaranteeing a cutting-edge experience for users as the software evolves over time.</br>
@@ -50,11 +51,6 @@ With that being said, feel free to report any issue, and if you have any ideas t
 * To start the project. Run `py manage.py runserver` Now open `127.0.0.1:8000` on your browser.
 
   
-* Login to the admin dashboard `127.0.0.1:8000/admin`
-```
-Username : Admin-1
-Password : adminuser239
-```
 
 ## Notice
 * For any **html** file to be uploaded. . .It content must be similar to this:
@@ -84,12 +80,26 @@ Password : adminuser239
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-* If you intend to commit to this **project**, I'd advise you leave the debug setting default. If you turn off debug, the software would assume you're intending to deploy to production, which would require creating an S3 bucket. While configuring s3 bucket can be quite strenuous, do not worry as i have already done 80% of the job. You can just go ahead, create, and configure the server side.
+*  If you're committed to this project, I recommend leaving the   production value as the default. Assigning ```bool(True)``` to this    variable will signal the software to assume a deployment to production, necessitating the creation of an S3 bucket and an RDS.
+
+* While configuring the S3 bucket may seem strenuous, I've already  completed 80% of the job. You can proceed to create and configure the server side. Meanwhile, refer to the next section for guidance on filling in the necessary credentials.
 ```
    'static'
    'media'
 ```
 ![S3-Bucket-Objects](.images/soft-fire.png)
-Fill in the correct information in an ".env" file located in the project's root directory.
 
-* However, The API doesn't come with a command to collectmedia file for upload unto the s3 bucket. A workaround command would be available soon as the software's development proceeds.
+
+  
+## Production Guide 
+* Inside the project's folder named *.credentials*, you'll find two empty files:
+  * **.env** for S3 credentials
+  * **db** for RDS credentials
+
+* The software's current configured database is *PostgreSQL; remember this when selecting your **database engine**.
+
+* Once you've submitted the necessary cloud resource credentials to the aforementioned files, proceed to assign bool(True) to the *production variable*.
+
+* Now run ```py manage.py migrate```
+
+* **Note**: Currently, this API lacks a command to collect media files for upload to the S3 bucket. A workaround command will be available soon as the software's development progresses. I recommend manually uploading the folders to your S3 bucket. Once done, you can proceed to run the project, as the software will handle serving the media files.

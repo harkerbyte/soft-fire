@@ -54,7 +54,7 @@ class game(BaseStorage):
     author = models.ForeignKey(User,
                                related_name = 'games',
                                on_delete = models.CASCADE,
-                               default = 3)
+                               default = 1)
     
     description = models.TextField(max_length= 300,
                                    default = 'Enjoy the game 🎮')
