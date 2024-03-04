@@ -6,8 +6,6 @@
 
 ### Cross Platform and Licence
 
-### Cross Platform and Licence
-
 
 ![node-current](https://img.shields.io/node/v/package?style=for-the-badge&logo=node&logoColor=blue)
 ![GitHub License](https://img.shields.io/github/license/harkerbyte/soft-fire?style=for-the-badge&logo=github&color=green)
