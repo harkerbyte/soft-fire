@@ -7,8 +7,16 @@ postgresql
 .idea
 *sass
 desktop.ini
+.ssh
+.ssh.pub
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+
+
+
+
+
+
+
+
+
+

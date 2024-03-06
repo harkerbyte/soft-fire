@@ -23,7 +23,7 @@ An innovative web app, seamlessly integrates **Python and JS** to create a dynam
 | Version |  Publicized  |   What's New
 ----------|--------------|---------          
 |1.0.0    | 2024-01-19   | Initial release 
-|2.4.0    | 2024-03-02   | New Ui and feel, Template to upload game properties. File conversion & Download (Ts to Js & .scss to .css), S3 storage system.|
+|2.4.0    | 2024-03-02   | Ui and feel, Template to upload game properties. File conversion & Download (Ts to Js & .scss to .css), S3 storage system.|
 |2.5.0    |2024-03-04    |Database Engine : PostgreSQL|
 
 

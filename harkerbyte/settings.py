@@ -63,7 +63,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'harkerbyte.wsgi.application'
 
 #READY FOR PRODUCTION? - True / False 
-PRODUCTION = False
+PRODUCTION = True
 
 if PRODUCTION==True:
     #THIS CONDITION USES POSTGRESQL ON DEFAULT
@@ -74,7 +74,7 @@ if PRODUCTION==True:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'postgres',
             'USER':configdb.get('USER'),
-            'PASSWORD':configdb.get('PASSWORD'),
+            'PASSWORD':configdb.get("PASSWORD"),
             'HOST':configdb.get('HOST'),
             'PORT':configdb.get('PORT')
         }

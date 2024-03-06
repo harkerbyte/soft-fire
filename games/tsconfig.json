@@ -4,12 +4,12 @@
         "module": "CommonJS",
         "strict": true,
         "allowJs": true,
-        "sourceMap": true,
+        "sourceMap": true
     },
     "include": [
-        "./uploads/ts/*.ts",
+        "./uploads/ts/*.ts"
     ],
     "exclude": [
-        "./node_modules",
+        "./node_modules"
     ]
 }
