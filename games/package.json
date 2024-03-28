@@ -1,6 +1,6 @@
 {
     "name": "harkerbyte",
-    "version": "2.3.0",
+    "version": "2.5.0",
     "private": "true",
     "devDependencies": {
         "sass": "^1.70.0",
